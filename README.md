@@ -1,8 +1,6 @@
 <div align="center">
 <img src="./client/public/logo.png"/>
 
-# Pixora
-
 **The last image converter you'll ever need.**
 
 Pixora is a professional-grade, fully in-memory image conversion platform built for speed, privacy, and precision. No cloud. No disk writes. No tracking. Your files never leave your machine.
