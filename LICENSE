@@ -1,11 +1,38 @@
-Copyright (c) 2026 Sambhav Dwivedi
+Copyright (c) 2026 Sambhav Dwivedi. All Rights Reserved.
 
-All Rights Reserved.
+This software and all associated source code, design assets, documentation,
+and related files (collectively, the "Software") are the exclusive property
+of the author.
 
-This software and its source code are proprietary and confidential.
+No part of this Software may be reproduced, distributed, transmitted,
+sublicensed, modified, reverse-engineered, or used in any form or by any
+means — electronic, mechanical, photocopying, recording, or otherwise —
+without the prior written permission of the author.
 
-No part of this software may be copied, modified, distributed, sublicensed, sold, published, reverse engineered, decompiled, or used in any form, whether in source or binary form, without the prior written permission of the copyright holder.
+The following actions are strictly prohibited without explicit written
+authorization:
 
-Unauthorized use, reproduction, or distribution of this software is strictly prohibited.
+  · Using this Software, in whole or in part, in any personal, commercial,
+    academic, or open-source project.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  · Copying, forking, or redistributing the source code or compiled binaries.
+
+  · Modifying, adapting, or creating derivative works based on this Software.
+
+  · Removing or altering any copyright notices, branding, or attribution
+    contained within the Software.
+
+  · Deploying this Software as a hosted service, SaaS product, or API
+    accessible to third parties.
+
+This Software is provided solely for viewing and evaluation purposes.
+No license, right, or permission is granted by the mere availability
+of this source code.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHOR
+BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM OR IN
+CONNECTION WITH THE SOFTWARE OR ITS USE.
+
+All rights reserved.

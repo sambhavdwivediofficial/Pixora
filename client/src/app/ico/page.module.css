@@ -238,6 +238,64 @@
   animation: fade-in 0.3s ease;
 }
 
+/* Converting hint text */
+.convertingHint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  text-align: center;
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+/* Download success state */
+.dlSuccess {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--success-dim);
+  border: 1px solid var(--success);
+  border-radius: var(--radius-lg);
+  color: var(--success);
+  font-size: 0.88rem;
+  font-weight: 700;
+  width: 100%;
+  justify-content: center;
+  animation: scale-in 0.4s var(--transition-spring);
+}
+
+.dlSuccess svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--success);
+}
+
+/* Convert another */
+.convertAnotherBtn {
+  background: none;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: var(--font-display);
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.convertAnotherBtn:hover {
+  border-color: var(--border-bright);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 2rem 1rem 3rem;
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 480px) {
   .sizesGrid {
     grid-template-columns: repeat(2, 1fr);
