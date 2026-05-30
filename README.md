@@ -1,11 +1,5 @@
 <div align="center">
-
-<br />
-
 <img src="./client/public/logo.png"/>
-
-<br />
-<br />
 
 # Pixora
 
