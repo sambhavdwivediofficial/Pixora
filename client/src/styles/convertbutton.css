@@ -1,0 +1,72 @@
+.convert-btn-wrap {
+  width: 100%;
+  max-width: 520px;
+  animation: float-up 0.4s ease 0.2s both;
+}
+
+.convert-btn {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+  border: none;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.convert-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-bright), #c4b5fd);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.convert-btn:hover::before {
+  opacity: 1;
+}
+
+.convert-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124, 106, 247, 0.45);
+}
+
+.convert-btn:active {
+  transform: translateY(0);
+}
+
+.convert-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.convert-btn__text {
+  position: relative;
+  z-index: 1;
+}
+
+.convert-btn__arrow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.convert-btn__arrow svg {
+  width: 16px;
+  height: 16px;
+}

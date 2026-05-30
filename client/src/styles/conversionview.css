@@ -1,0 +1,48 @@
+.conversion-view {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  animation: fade-in 0.5s ease;
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+/* Arrow */
+.animated-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 80px;
+  padding-top: 120px; /* vertically center in box */
+  align-self: flex-start;
+}
+
+.animated-arrow__svg {
+  width: 60px;
+  height: 24px;
+  overflow: visible;
+}
+
+.animated-arrow__head {
+  animation: arrow-pulse 1.4s ease-in-out infinite;
+  transform-origin: 50px 12px;
+}
+
+@media (max-width: 900px) {
+  .conversion-view {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: -9px;
+  }
+
+  .animated-arrow {
+    width: auto;
+    padding-top: 0;
+    transform: rotate(90deg);
+  }
+}

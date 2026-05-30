@@ -1,0 +1,43 @@
+/* ── Responsive overrides ── */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .conversion-view {
+    gap: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .page-main {
+    padding: 2rem 1rem 3rem;
+    gap: 1.5rem;
+  }
+
+  .page-hero__title {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+
+  .page-hero__sub {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero__title {
+    font-size: 2rem;
+  }
+
+  .conversion-view {
+    padding: 0;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

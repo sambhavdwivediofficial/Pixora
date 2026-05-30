@@ -1,0 +1,118 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem 4rem;
+  gap: 2rem;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 560px;
+  animation: float-up 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 3vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--text-ultra);
+  margin-top: 10px;
+}
+
+.heroAccent {
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright), #c4b5fd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+.heroSub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* Upload section */
+.uploadSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 520px;
+}
+
+/* Conversion section */
+.conversionSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Error banner */
+.conversionError {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 12px 20px;
+  background: var(--error-dim);
+  border: 1px solid var(--error);
+  border-radius: var(--radius-md);
+  font-size: 0.83rem;
+  color: var(--error);
+  font-family: var(--font-mono);
+  animation: float-up 0.3s ease;
+}
+
+.retryBtn {
+  padding: 6px 14px;
+  background: var(--error);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+  white-space: nowrap;
+}
+
+.retryBtn:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 2rem 1rem 3rem;
+    gap: 1.5rem;
+  }
+  .heroTitle {
+    font-size: clamp(2rem, 1vw, 3rem);
+    font-weight: 800;
+  }
+  .heroSub {
+    font-size: 0.7rem;
+  }
+}

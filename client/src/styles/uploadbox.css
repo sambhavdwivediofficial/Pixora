@@ -1,0 +1,201 @@
+.upload-box {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  border: 2px dashed var(--border-default);
+  background: #1d154d3d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  overflow: hidden;
+  outline: none;
+  -webkit-user-drag: none;
+  
+}
+
+.upload-box:hover,
+.upload-box--dragover {
+  border-color: var(--accent);
+  background: var(--bg-elevated);
+  transform: scale(1.005);
+}
+
+.upload-box--has-image {
+  border-style: solid;
+  border-color: var(--border-default);
+  cursor: default;
+}
+
+.upload-box--has-image:hover {
+  transform: none;
+}
+
+.upload-box--error {
+  border-color: var(--error);
+  background: var(--error-dim);
+}
+
+.upload-box__idle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  animation: fade-in 0.3s ease;
+}
+
+.upload-box__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.upload-box:hover .upload-box__icon,
+.upload-box--dragover .upload-box__icon {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.upload-box__icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--text-secondary);
+  transition: color var(--transition-base);
+}
+
+.upload-box:hover .upload-box__icon svg,
+.upload-box--dragover .upload-box__icon svg {
+  color: var(--accent-bright);
+}
+
+.upload-box__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.upload-box__sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+}
+
+.upload-box__formats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.upload-box__fmt-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Preview state */
+.upload-box__preview {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fade-in 0.4s ease;
+}
+
+.upload-box__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+}
+
+/* Validating overlay */
+.upload-box__validating {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 12, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: var(--radius-xl);
+  animation: fade-in 0.2s ease;
+}
+
+.upload-box__validating-text {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+/* Error state */
+.upload-box__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  animation: fade-in 0.3s ease;
+}
+
+.upload-box__error-icon {
+  font-size: 1.75rem;
+}
+
+.upload-box__error-msg {
+  font-size: 0.82rem;
+  color: var(--error);
+  font-family: var(--font-mono);
+  line-height: 1.5;
+}
+
+.upload-box__error-retry {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Dragover pulse */
+@keyframes drag-pulse {
+  0%, 100% { border-color: var(--accent); }
+  50%       { border-color: var(--accent-bright); }
+}
+
+.upload-box--dragover {
+  animation: drag-pulse 1s ease-in-out infinite;
+}
+
+@media (max-width: 600px) {
+  .upload-box {
+    aspect-ratio: 3 / 2;
+    border-radius: var(--radius-lg);
+  }
+}

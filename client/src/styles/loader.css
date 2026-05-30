@@ -1,0 +1,28 @@
+.loader-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.loader-ring {
+  animation: spin 0.9s linear infinite;
+  display: block;
+}
+
+.loader-track {
+  stroke: var(--border-default);
+}
+
+.loader-arc {
+  stroke: var(--loader-color, var(--accent));
+  stroke-dasharray: 60 35;
+  filter: drop-shadow(0 0 6px var(--loader-color, var(--accent)));
+}
+
+.loader-label {
+  font-size: 0.73rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
