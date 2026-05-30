@@ -6,12 +6,10 @@ import UploadBox from '@/components/UploadBox';
 import UploadInfo from '@/components/UploadInfo';
 import Loader from '@/components/Loader';
 import { useUpload } from '@/hooks/useUpload';
-import { useDownload } from '@/hooks/useDownload';
 import { convertToIco } from '@/services/ico_service';
 import { storeIcoZip } from '@/services/upload';
 import { idbClearAll } from '@/services/indexeddb';
 import { sleep } from '@/utils/helpers';
-import { validateFileForIco } from '@/utils/validators';
 import styles from './page.module.css';
 
 const ICO_SIZES = ['16×16', '32×32', '48×48', '64×64', '128×128', '256×256'];
@@ -19,28 +17,11 @@ const ICO_SIZES = ['16×16', '32×32', '48×48', '64×64', '128×128', '256×256
 export default function IcoPage() {
   const upload = useUpload();
 
-  const [phase,     setPhase]     = useState('upload');   // upload | converting | done | error
+  const [phase,     setPhase]     = useState('upload');
   const [zipBlob,   setZipBlob]   = useState(null);
   const [errMsg,    setErrMsg]    = useState('');
   const [dlDone,    setDlDone]    = useState(false);
   const [dlRunning, setDlRunning] = useState(false);
-
-  /* Override upload handler to use ICO-specific validator */
-  const handleFile = useCallback(async (file) => {
-    const check = validateFileForIco(file);
-    if (!check.ok) {
-      // Surface error through the upload hook by passing the file anyway —
-      // the hook also validates; but we want the ICO-specific message.
-      // We manually reset with an error flag instead.
-      upload.handleFile(null); // reset state
-      // Use the hook's internal state via a trick: just call with ICO check result
-      // Actually the cleanest way: we call handleFile (it will do its own check too).
-      // Since we want the ICO-specific error, we set it explicitly after.
-      // The upload hook uses SUPPORTED_INPUT_FORMATS which excludes ICO too, so it works.
-      return;
-    }
-    await upload.handleFile(file);
-  }, [upload]);
 
   const handleConvert = useCallback(async () => {
     if (!upload.file) return;
@@ -100,13 +81,13 @@ export default function IcoPage() {
 
         {/* Hero */}
         <header className={styles.hero}>
-          <div className={styles.heroBadge}>
+          {/* <div className={styles.heroBadge}>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <rect x="2" y="3" width="20" height="14" rx="2"/>
               <path d="M8 21h8M12 17v4"/>
             </svg>
             Favicon Generator
-          </div>
+          </div> */}
           <h1 className={styles.heroTitle}>
             Convert to <span className={styles.heroAccent}>ICO</span>
           </h1>
@@ -126,6 +107,7 @@ export default function IcoPage() {
               error={upload.error}
               locked={upload.validated && phase !== 'error'}
               resetError={upload.reset}
+              icoPage={true}
             />
 
             {upload.validated && upload.info && phase !== 'error' && (
@@ -196,7 +178,6 @@ export default function IcoPage() {
               ready to drop into any web project.
             </p>
 
-            {/* Size grid */}
             <div className={styles.sizesGrid}>
               {ICO_SIZES.map(s => (
                 <div key={s} className={styles.sizeChip}>
@@ -208,7 +189,6 @@ export default function IcoPage() {
               ))}
             </div>
 
-            {/* Download / success button */}
             {dlDone ? (
               <div className={styles.dlSuccess}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

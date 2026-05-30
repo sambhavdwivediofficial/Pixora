@@ -42,11 +42,12 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 3vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.1;
   color: var(--text-ultra);
+  margin-top: -20px;
 }
 
 .heroAccent {
@@ -71,6 +72,7 @@
   gap: 1rem;
   width: 100%;
   max-width: 520px;
+  margin-bottom: -20px;
 }
 
 /* Convert button */
@@ -293,6 +295,13 @@
   .main {
     padding: 2rem 1rem 3rem;
     gap: 1.5rem;
+  }
+  .heroTitle {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-top: 40px;
+  }
+  .heroSub {
+    font-size: 0.8rem;
   }
 }
 

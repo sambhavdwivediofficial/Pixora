@@ -5,7 +5,7 @@
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-xl);
   border: 2px dashed var(--border-default);
-  background: #1d154d3d;
+  background: var(--bg-card);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,14 +15,13 @@
   transition: all var(--transition-base);
   overflow: hidden;
   outline: none;
-  -webkit-user-drag: none;
-  
 }
 
 .upload-box:hover,
 .upload-box--dragover {
   border-color: var(--accent);
   background: var(--bg-elevated);
+  box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-md);
   transform: scale(1.005);
 }
 
@@ -34,6 +33,7 @@
 
 .upload-box--has-image:hover {
   transform: none;
+  box-shadow: var(--shadow-md);
 }
 
 .upload-box--error {
@@ -114,6 +114,69 @@
   border: 1px solid var(--border-default);
   color: var(--text-muted);
   letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* "No ICO" / blocked badge */
+.upload-box__fmt-tag--blocked {
+  color: var(--error);
+  border-color: rgba(248, 113, 113, 0.35);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+/* ICO warning — shown for 2 sec when ICO dropped on /ico page */
+.upload-box__ico-warning {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.75rem 2rem;
+  text-align: center;
+  animation: fade-in 0.2s ease;
+}
+
+.upload-box__ico-warning-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.upload-box__ico-warning-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--error);
+}
+
+.upload-box__ico-warning-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--error);
+  letter-spacing: -0.01em;
+}
+
+.upload-box__ico-warning-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+}
+
+.upload-box__ico-warning-sub em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+/* Box border turns red during ICO warning */
+.upload-box--ico-warn {
+  border-color: rgba(248, 113, 113, 0.5);
+  background: rgba(248, 113, 113, 0.04);
 }
 
 /* Preview state */
@@ -197,6 +260,5 @@
   .upload-box {
     aspect-ratio: 3 / 2;
     border-radius: var(--radius-lg);
-    margin-top: 60px;
   }
 }
