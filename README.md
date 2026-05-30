@@ -11,7 +11,7 @@ Pixora is a Image Processing Suite, fully in-memory image conversion platform bu
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com)
 [![Rust](https://img.shields.io/badge/Axum-Rust-orange?style=flat-square&logo=rust)](https://github.com/tokio-rs/axum)
-[![Author](https://img.shields.io/badge/Author-Sambhav%20Dwivedi-purple?style=flat-square)]()
+[![Author](https://img.shields.io/badge/Author-Sambhav%20Dwivedi-purple?style=flat-square)](https://www.sambhavdwivedi.in)
 
 </div>
 
