@@ -151,7 +151,7 @@ Returns image bytes with all embedded metadata removed.
 
 ## Author
 
-### Sambhav Dwivedi
+### [Sambhav Dwivedi](https://www.sambhavdwivedi.in)
 
 Developer of **Pixora**.
 
