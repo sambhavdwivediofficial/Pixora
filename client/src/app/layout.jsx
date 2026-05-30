@@ -2,7 +2,7 @@ import './globals.css';
 
 export const metadata = {
   title: 'Pixora — Image Converter',
-  description: 'Modern professional image conversion tool. Convert PNG, JPG, WEBP, AVIF, HEIC, BMP, TIFF, SVG and more.',
+  description: 'Modern image conversion tool. Convert PNG, JPG, WEBP, ICO, AVIF, HEIC, BMP, TIFF, SVG and more.',
   icons: {
     icon: '/favicon.png',
   },

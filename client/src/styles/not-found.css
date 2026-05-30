@@ -1,0 +1,102 @@
+/* Fix: Use viewport height without breaking interactions */
+html.not-found-page,
+body.not-found-page {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+/* Wrapper to ensure no scroll */
+.not-found-wrapper {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+  overflow: hidden;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 2rem;
+  margin-top: -50px;
+}
+
+/* .glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--accent);
+  filter: blur(180px);
+  opacity: 0.12;
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+} */
+
+.code {
+  font-size: clamp(6rem, 18vw, 12rem);
+  font-weight: 800;
+  line-height: 1;
+  font-family: var(--font-display);
+  color: var(--accent-bright);
+  text-shadow: 0 0 40px var(--accent-glow);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--text-ultra);
+  font-weight: 700;
+}
+
+.description {
+  max-width: 600px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.button {
+  margin-top: 1rem;
+  padding: 0.9rem 1.8rem;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-accent);
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  z-index: 1;
+  position: relative;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  background: var(--accent-dim);
+}
+
+/* Ensure all links and interactive elements work */
+a, button, [role="button"] {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}

@@ -197,5 +197,6 @@
   .upload-box {
     aspect-ratio: 3 / 2;
     border-radius: var(--radius-lg);
+    margin-top: 60px;
   }
 }

@@ -1,7 +1,7 @@
 .footer {
   margin-top: -40px;
   padding: 1.5rem 2rem;
-  border-top: 1px solid var(--border-subtle);
+  /* border-top: 1px solid var(--border-subtle); */
   display: flex;
   align-items: center;
   gap: 1rem;
