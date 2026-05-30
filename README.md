@@ -3,7 +3,7 @@
 
 **The last image converter you'll ever need.**
 
-Pixora is a professional-grade, fully in-memory image conversion platform built for speed, privacy, and precision. No cloud. No disk writes. No tracking. Your files never leave your machine.
+Pixora is a Image Processing Suite, fully in-memory image conversion platform built for speed, privacy, and precision. No cloud. No disk writes. No tracking. Your files never leave your machine.
 
 <br />
 
@@ -164,6 +164,8 @@ See the `LICENSE` file for licensing terms and restrictions.
 ---
 
 <div align="center">
-  
-**Pixora** — Fast. Private. Precise.
+
+### Built for Speed. Engineered for Privacy. Designed for Precision.
+
+**Pixora** — The professional Image Processing Suite.
 </div>
