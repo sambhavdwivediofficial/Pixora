@@ -2,7 +2,7 @@
 
 <br />
 
-<img src="./client/public/logo.png" alt="Pixora" width="110" />
+<img src="./client/public/logo.png"/>
 
 <br />
 <br />
