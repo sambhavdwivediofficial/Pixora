@@ -17,12 +17,14 @@ export default function ConvertedPreview({
   return (
     <div
       className={`preview-box preview-box--converted ${result ? 'preview-box--expanded' : ''}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <div className="preview-box__label preview-box__label--accent">Converted</div>
 
-      <div className="preview-box__image-wrap">
+      <div
+        className="preview-box__image-wrap"
+        onMouseEnter={() => result && setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
         {converting && (
           <div className="preview-box__converting">
             <Loader size={44} label="Converting…" />
@@ -58,7 +60,6 @@ export default function ConvertedPreview({
         )}
       </div>
 
-      {/* Info below converted image — expands on completion */}
       {result && (
         <div className="preview-box__info preview-box__info--animated">
           <UploadInfo

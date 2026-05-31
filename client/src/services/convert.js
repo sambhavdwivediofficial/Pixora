@@ -2,10 +2,6 @@ import { apiUrl } from './api';
 
 /**
  * Convert image via backend.
- * @param {Blob} blob
- * @param {string} filename
- * @param {object} options
- * @returns {Promise<{blob, mime, width, height, size, format}>}
  */
 export async function convertImage(blob, filename, options) {
   const {
@@ -20,11 +16,11 @@ export async function convertImage(blob, filename, options) {
   const fd = new FormData();
   fd.append('file', blob, filename);
   fd.append('target_format', targetFormat);
-  if (width)  fd.append('width', String(width));
+  if (width)  fd.append('width',  String(width));
   if (height) fd.append('height', String(height));
-  fd.append('preserve_aspect', String(preserveAspect));
-  fd.append('quality', String(quality));
-  fd.append('preserve_metadata', String(preserveMetadata));
+  fd.append('preserve_aspect',    String(preserveAspect));
+  fd.append('quality',            String(quality));
+  fd.append('preserve_metadata',  String(preserveMetadata));
 
   const res = await fetch(apiUrl('/api/convert'), {
     method: 'POST',
@@ -36,18 +32,20 @@ export async function convertImage(blob, filename, options) {
     throw new Error(err.detail || 'Conversion failed');
   }
 
-  const outBlob = await res.blob();
-  const outWidth  = parseInt(res.headers.get('X-Output-Width')  || '0');
-  const outHeight = parseInt(res.headers.get('X-Output-Height') || '0');
-  const outSize   = parseInt(res.headers.get('X-Output-Size')   || '0');
+  const outBlob   = await res.blob();
+
+  // Read exposed headers
+  const outWidth  = parseInt(res.headers.get('X-Output-Width')  || '0', 10);
+  const outHeight = parseInt(res.headers.get('X-Output-Height') || '0', 10);
+  const outSize   = parseInt(res.headers.get('X-Output-Size')   || '0', 10);
   const outFormat = res.headers.get('X-Output-Format') || targetFormat.toUpperCase();
 
   return {
-    blob: outBlob,
-    mime: outBlob.type,
-    width: outWidth,
-    height: outHeight,
-    size: outSize || outBlob.size,
+    blob:   outBlob,
+    mime:   outBlob.type,
+    width:  outWidth  || null,
+    height: outHeight || null,
+    size:   outSize   || outBlob.size,
     format: outFormat,
   };
 }

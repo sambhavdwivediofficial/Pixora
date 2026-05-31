@@ -44,11 +44,12 @@ async def convert(
 
         ext = "jpg" if tgt in ("jpeg",) else tgt
         headers = {
-            "X-Output-Width": str(out_w),
+            "X-Output-Width":  str(out_w),
             "X-Output-Height": str(out_h),
-            "X-Output-Size": str(len(converted)),
+            "X-Output-Size":   str(len(converted)),
             "X-Output-Format": tgt.upper(),
             "Content-Disposition": f'attachment; filename="pixora_converted.{ext}"',
+            "Access-Control-Expose-Headers": "X-Output-Width, X-Output-Height, X-Output-Size, X-Output-Format",
         }
         return Response(content=converted, media_type=mime, headers=headers)
 

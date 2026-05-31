@@ -26,6 +26,6 @@ export function downloadBlob(blob, filename) {
 /** Build a filename for the converted image */
 export function buildFilename(originalName, targetFormat) {
   const base = originalName.replace(/\.[^/.]+$/, '');
-  const ext = targetFormat.toLowerCase() === 'jpeg' ? 'jpg' : targetFormat.toLowerCase();
-  return `${base}_pixora.${ext}`;
+  const ext  = targetFormat.toLowerCase() === 'jpeg' ? 'jpg' : targetFormat.toLowerCase();
+  return `Pixora-${base}.${ext}`;
 }
