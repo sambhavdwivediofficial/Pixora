@@ -71,7 +71,7 @@ src-tauri/gen
 # =========================
 .DS_Store
 Thumbs.db
-txt/
+txt
 
 # =========================
 # Logs
