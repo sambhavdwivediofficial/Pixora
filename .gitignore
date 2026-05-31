@@ -65,13 +65,13 @@ src-tauri/gen
 .idea/
 *.swp
 *.swo
-txt/
 
 # =========================
 # OS Files
 # =========================
 .DS_Store
 Thumbs.db
+txt/
 
 # =========================
 # Logs
