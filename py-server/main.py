@@ -35,16 +35,16 @@ app.include_router(ico_router, prefix="/api/ico", tags=["ICO"])
 @app.get("/", tags=["Health"])
 async def root():
     return {
+        "backend": "Python",
         "service": "Pixora Python Backend",
         "status": "running",
         "version": "1.0.0",
-        "backend": "python",
     }
 
 
 @app.get("/health", tags=["Health"])
 async def health():
-    return {"status": "ok", "backend": "python"}
+    return { "backend": "Python", "status": "ok"}
 
 
 if __name__ == "__main__":

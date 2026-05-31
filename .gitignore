@@ -43,6 +43,8 @@ dist/
 # =========================
 target/
 Cargo.lock
+src-tauri/icons
+src-tauri/gen
 
 # Uncomment below if building an application
 #! Cargo.lock
@@ -63,6 +65,7 @@ Cargo.lock
 .idea/
 *.swp
 *.swo
+txt/
 
 # =========================
 # OS Files
