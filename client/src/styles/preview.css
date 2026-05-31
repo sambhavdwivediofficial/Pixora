@@ -137,7 +137,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 28px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+  background: var(--accent);
   border: none;
   border-radius: var(--radius-lg);
   color: #fff;
@@ -146,12 +146,13 @@
   font-family: var(--font-display);
   cursor: pointer;
   transition: all var(--transition-base);
-  box-shadow: 0 4px 24px rgba(124, 106, 247, 0.5);
+  /* box-shadow: 0 4px 24px rgba(124, 106, 247, 0.5); */
 }
 
 .download-overlay__btn:hover {
+  background-color: var(--accent-dim);
   transform: scale(1.05);
-  box-shadow: 0 8px 32px rgba(124, 106, 247, 0.65);
+  /* box-shadow: 0 8px 32px rgba(124, 106, 247, 0.65); */
 }
 
 .download-overlay__btn:active {
