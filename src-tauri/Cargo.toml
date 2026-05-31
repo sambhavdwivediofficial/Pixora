@@ -6,7 +6,7 @@ authors     = ["Pixora Contributors"]
 description = "Pixora — Professional Image Converter (Rust Backend + Tauri App)"
 
 [[bin]]
-name = "pixora-server"
+name = "Pixora"
 path = "src/main.rs"
 
 [lib]
@@ -67,7 +67,7 @@ optional = true
 # `server`  → standalone HTTP binary (default)
 # `desktop` → Tauri window + embedded server
 # `custom-protocol` → set automatically by `cargo tauri build`
-default         = ["server"]
+default         = ["desktop"]
 server          = []
 desktop         = ["tauri", "tauri-plugin-shell"]
 custom-protocol = ["tauri/custom-protocol"]

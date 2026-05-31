@@ -1,5 +1,5 @@
 'use client';
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import UploadBox from '@/components/UploadBox';
@@ -13,6 +13,17 @@ import { useDownload } from '@/hooks/useDownload';
 import styles from './page.module.css';
 
 export default function Home() {
+  useEffect(() => {
+  const setTitle = async () => {
+    if ('__TAURI_INTERNALS__' in window) {
+      const { getCurrentWindow } = await import('@tauri-apps/api/window');
+      await getCurrentWindow().setTitle('Pixora — Image Converter');
+    }
+  };
+
+  setTitle();
+}, []);
+
   const upload    = useUpload();
   const conversion = useConversion();
   const dl        = useDownload();

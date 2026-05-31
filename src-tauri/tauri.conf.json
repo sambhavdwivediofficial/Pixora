@@ -13,15 +13,23 @@
     "windows": [
       {
         "title": "Pixora — Image Converter",
-        "width": 1280,
-        "height": 860,
-        "minWidth": 900,
-        "minHeight": 640,
-        "resizable": true,
-        "fullscreen": false,
-        "center": true,
-        "decorations": true,
-        "transparent": false
+          "width": 1200,
+          "height": 777,
+          
+          "x": 200,
+          "y": 7,
+      
+          "minWidth": 600,
+          "minHeight": 600,
+      
+          "resizable": true,
+          "fullscreen": false,
+      
+          "center": false,
+      
+          "decorations": true,
+          "transparent": false,
+          "alwaysOnTop": false
       }
     ],
     "security": {

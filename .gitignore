@@ -65,6 +65,7 @@ src-tauri/gen
 .idea/
 *.swp
 *.swo
+capabilities
 
 # =========================
 # OS Files

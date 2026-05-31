@@ -13,9 +13,16 @@
 // Tauri requires this on Windows in release mode
 
 
+#[cfg(not(feature = "desktop"))]
 use std::net::SocketAddr;
+
+#[cfg(not(feature = "desktop"))]
 use dotenvy::dotenv;
+
+#[cfg(not(feature = "desktop"))]
 use tracing_subscriber::{fmt, EnvFilter};
+
+#[cfg(not(feature = "desktop"))]
 use tracing_subscriber::prelude::*;
 
 #[cfg(feature = "desktop")]

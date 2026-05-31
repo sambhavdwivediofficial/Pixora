@@ -1,5 +1,5 @@
 'use client';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import UploadBox from '@/components/UploadBox';
@@ -15,6 +15,17 @@ import styles from './page.module.css';
 const ICO_SIZES = ['16×16', '32×32', '48×48', '64×64', '128×128', '256×256'];
 
 export default function IcoPage() {
+  useEffect(() => {
+  const setTitle = async () => {
+    if ('__TAURI_INTERNALS__' in window) {
+      const { getCurrentWindow } = await import('@tauri-apps/api/window');
+      await getCurrentWindow().setTitle('Pixora | Favicon Converter ');
+    }
+  };
+
+  setTitle();
+}, []);
+
   const upload = useUpload();
 
   const [phase,     setPhase]     = useState('upload');

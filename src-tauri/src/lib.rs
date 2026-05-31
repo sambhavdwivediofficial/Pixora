@@ -65,6 +65,7 @@ async fn health_handler() -> Json<serde_json::Value> {
 pub fn run_tauri_app() {
     use std::thread;
     use std::net::SocketAddr;
+    use tauri::Manager;
 
     // Start embedded HTTP server on port 8599 in a background thread
     thread::spawn(|| {
@@ -85,6 +86,11 @@ pub fn run_tauri_app() {
     // Launch Tauri window
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
+        .on_window_event(|window, event| {
+            if let tauri::WindowEvent::CloseRequested { .. } = event {
+                window.app_handle().exit(0);
+            }
+        })
         .run(tauri::generate_context!())
         .expect("Error while running Tauri application");
 }
