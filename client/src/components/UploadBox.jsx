@@ -179,7 +179,7 @@ export default function UploadBox({
                 <line x1="18" y1="6" x2="6" y2="18"/>
                 <line x1="6" y1="6" x2="18" y2="18"/>
               </svg>
-              {icoPage ? 'No ICO' : 'No ICO output'}
+              {icoPage ? 'No ICO input' : 'No ICO output'}
             </span>
           </div>
         </div>
