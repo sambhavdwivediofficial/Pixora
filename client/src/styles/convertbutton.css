@@ -29,7 +29,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--accent-bright), #c4b5fd);
+  background: linear-gradient(var(--accent-dim), #937fe6);
   opacity: 0;
   transition: opacity var(--transition-base);
 }
@@ -40,7 +40,7 @@
 
 .convert-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(124, 106, 247, 0.45);
+  /* box-shadow: 0 8px 32px rgba(124, 106, 247, 0.45); */
 }
 
 .convert-btn:active {

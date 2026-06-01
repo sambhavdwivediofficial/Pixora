@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '@/styles/settings.css';
 import { getOutputFormats } from '@/utils/formats';
 import { computeAspectHeight, computeAspectWidth } from '@/utils/dimensions';
@@ -13,14 +13,24 @@ export default function Settings({ sourceFormat, origWidth, origHeight, onChange
   const [quality,           setQuality]           = useState(90);
 
   const formats = getOutputFormats(sourceFormat);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Set default format when source format changes
   useEffect(() => {
-    if (formats.length > 0 && !outputFormat) {
-      const def = formats[0];
-      setOutputFormat(def);
-    }
-  }, [sourceFormat]);
+  setOutputFormat('');
+}, [sourceFormat]);
 
   // Emit changes upward
   useEffect(() => {
@@ -58,18 +68,48 @@ export default function Settings({ sourceFormat, origWidth, origHeight, onChange
         Conversion Settings
       </div>
 
-      {/* Output Format */}
+      {/* Output Format – Custom Dropdown */}
       <div className="settings__row">
         <label className="settings__label">Convert To</label>
-        <select
-          className="settings__select"
-          value={outputFormat}
-          onChange={e => setOutputFormat(e.target.value)}
-        >
-          {formats.map(f => (
-            <option key={f} value={f}>{f}</option>
-          ))}
-        </select>
+        <div className="settings__custom-select" ref={dropdownRef}>
+          <button
+            type="button"
+            className="settings__custom-select-trigger"
+            onClick={() => setDropdownOpen(prev => !prev)}
+          >
+            <span>{outputFormat || 'Select'}</span>
+            <svg
+              className={`settings__custom-select-arrow ${dropdownOpen ? 'settings__custom-select-arrow--open' : ''}`}
+              width="10"
+              height="6"
+              viewBox="0 0 10 6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M1 1l4 4 4-4" />
+            </svg>
+          </button>
+          {dropdownOpen && (
+            <ul className="settings__custom-select-menu">
+              {formats.map(f => (
+                <li
+                  key={f}
+                  className={`settings__custom-select-item ${outputFormat === f ? 'settings__custom-select-item--selected' : ''}`}
+                  onMouseDown={(e) => {
+                    e.preventDefault();  // prevent blur before click
+                    setOutputFormat(f);
+                    setDropdownOpen(false);
+                  }}
+                >
+                  {f}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
 
       {/* Dimensions */}

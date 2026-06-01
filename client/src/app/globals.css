@@ -68,6 +68,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  -webkit-user-drag: none;
 }
 
 body {
@@ -77,6 +78,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.6;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* Scrollbar */
