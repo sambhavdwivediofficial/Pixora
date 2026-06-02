@@ -13,17 +13,21 @@ export default function ConvertButton({ sourceFormat, outputFormat, onClick, dis
         type="button"
         aria-label={hasMapping ? `Convert ${sourceFormat} to ${outputFormat}` : 'Convert'}
       >
-        <span className="convert-btn__text">
-          {hasMapping
-            ? `${sourceFormat} → ${outputFormat}`
-            : 'Convert'}
-        </span>
-        <span className="convert-btn__arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </span>
+        <div className="convert-btn__content">
+          <div className="convert-btn__top">
+            <span className="convert-btn__icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" strokeWidth="0">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </span>
+            <span className="convert-btn__label">Convert</span>
+          </div>
+          {hasMapping && (
+            <div className="convert-btn__mapping">
+              {sourceFormat} → {outputFormat}
+            </div>
+          )}
+        </div>
       </button>
     </div>
   );

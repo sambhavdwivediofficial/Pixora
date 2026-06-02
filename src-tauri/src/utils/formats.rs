@@ -5,7 +5,7 @@ use std::collections::HashSet;
 /// Formats accepted as upload input on the main page.
 pub fn supported_input_formats() -> HashSet<&'static str> {
     ["png", "jpg", "jpeg", "webp", "bmp", "tiff", "tif",
-     "avif", "heic", "heif", "svg", "ico"]
+     "avif", "svg", "ico"]
         .into_iter()
         .collect()
 }
@@ -13,7 +13,7 @@ pub fn supported_input_formats() -> HashSet<&'static str> {
 /// Formats accepted as upload input on the /ico page (no ICO input).
 pub fn ico_input_formats() -> HashSet<&'static str> {
     ["png", "jpg", "jpeg", "webp", "bmp", "tiff", "tif",
-     "avif", "heic", "heif", "svg"]
+     "avif", "svg"]
         .into_iter()
         .collect()
 }
@@ -28,13 +28,12 @@ pub fn output_formats() -> HashSet<&'static str> {
 /// ICO sizes to generate in the favicon package.
 pub const ICO_SIZES: &[u32] = &[16, 32, 48, 64, 128, 256];
 
-/// Normalize a format string: lowercase, strip dot, jpeg→jpg, tif→tiff, heif→heic.
+/// Normalize a format string: lowercase, strip dot, jpeg→jpg, tif→tiff.
 pub fn normalize_format(fmt: &str) -> String {
     let s = fmt.trim_start_matches('.').to_lowercase();
     match s.as_str() {
         "jpeg"        => "jpg".into(),
         "tif"         => "tiff".into(),
-        "heif"        => "heic".into(),
         other         => other.into(),
     }
 }
@@ -48,7 +47,6 @@ pub fn get_mime(fmt: &str) -> &'static str {
         "bmp"  => "image/bmp",
         "tiff" => "image/tiff",
         "avif" => "image/avif",
-        "heic" => "image/heic",
         "svg"  => "image/svg+xml",
         "ico"  => "image/x-icon",
         "zip"  => "application/zip",

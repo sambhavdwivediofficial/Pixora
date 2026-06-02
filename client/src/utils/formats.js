@@ -1,20 +1,21 @@
 export const SUPPORTED_INPUT_FORMATS = new Set([
   'png', 'jpg', 'jpeg', 'webp', 'bmp', 'tiff', 'tif',
-  'avif', 'heic', 'heif', 'svg', 'ico',
+  'avif', 'svg', 'ico',
 ]);
 
 export const ICO_INPUT_FORMATS = new Set([
   'png', 'jpg', 'jpeg', 'webp', 'bmp', 'tiff', 'tif',
-  'avif', 'heic', 'heif', 'svg',
+  'avif', 'svg',
 ]);
 
 export const UNSUPPORTED_FORMATS = new Set([
   'gif', 'mp4', 'mov', 'avi', 'mkv', 'webm',
   'mp3', 'wav', 'ogg', 'flac',
   'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'txt',
+  'heic', 'heif',
 ]);
 
-export const ALL_OUTPUT_FORMATS = ['PNG', 'JPG', 'WEBP', 'BMP', 'TIFF', 'AVIF', 'HEIC', 'SVG'];
+export const ALL_OUTPUT_FORMATS = ['PNG', 'JPG', 'WEBP', 'BMP', 'TIFF', 'AVIF', 'SVG'];
 
 /** Get available output formats excluding the source format and ICO */
 export function getOutputFormats(sourceFormat) {
@@ -48,7 +49,6 @@ export function getExtFromMime(mime) {
     'image/bmp':        'bmp',
     'image/tiff':       'tiff',
     'image/avif':       'avif',
-    'image/heic':       'heic',
     'image/svg+xml':    'svg',
     'image/x-icon':     'ico',
     'application/zip':  'zip',
@@ -61,7 +61,7 @@ export function formatLabel(fmt) {
   const n = normalizeFormat(fmt);
   const labels = {
     jpg: 'JPG', jpeg: 'JPG', png: 'PNG', webp: 'WEBP',
-    bmp: 'BMP', tiff: 'TIFF', avif: 'AVIF', heic: 'HEIC',
+    bmp: 'BMP', tiff: 'TIFF', avif: 'AVIF',
     svg: 'SVG', ico: 'ICO',
   };
   return labels[n] || fmt.toUpperCase();

@@ -29,8 +29,8 @@ export default function Settings({ sourceFormat, origWidth, origHeight, onChange
 
   // Set default format when source format changes
   useEffect(() => {
-  setOutputFormat('');
-}, [sourceFormat]);
+    setOutputFormat('');
+  }, [sourceFormat]);
 
   // Emit changes upward
   useEffect(() => {
@@ -68,47 +68,67 @@ export default function Settings({ sourceFormat, origWidth, origHeight, onChange
         Conversion Settings
       </div>
 
-      {/* Output Format – Custom Dropdown */}
-      <div className="settings__row">
-        <label className="settings__label">Convert To</label>
-        <div className="settings__custom-select" ref={dropdownRef}>
-          <button
-            type="button"
-            className="settings__custom-select-trigger"
-            onClick={() => setDropdownOpen(prev => !prev)}
-          >
-            <span>{outputFormat || 'Select'}</span>
-            <svg
-              className={`settings__custom-select-arrow ${dropdownOpen ? 'settings__custom-select-arrow--open' : ''}`}
-              width="10"
-              height="6"
-              viewBox="0 0 10 6"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+      {/* Top Row: Output Format + Quality */}
+      <div className="settings__top-row">
+        {/* Output Format – Custom Dropdown */}
+        <div className="settings__row settings__row--compact">
+          <label className="settings__label">Convert To</label>
+          <div className="settings__custom-select" ref={dropdownRef}>
+            <button
+              type="button"
+              className="settings__custom-select-trigger"
+              onClick={() => setDropdownOpen(prev => !prev)}
             >
-              <path d="M1 1l4 4 4-4" />
-            </svg>
-          </button>
-          {dropdownOpen && (
-            <ul className="settings__custom-select-menu">
-              {formats.map(f => (
-                <li
-                  key={f}
-                  className={`settings__custom-select-item ${outputFormat === f ? 'settings__custom-select-item--selected' : ''}`}
-                  onMouseDown={(e) => {
-                    e.preventDefault();  // prevent blur before click
-                    setOutputFormat(f);
-                    setDropdownOpen(false);
-                  }}
-                >
-                  {f}
-                </li>
-              ))}
-            </ul>
-          )}
+              <span>{outputFormat || 'Select'}</span>
+              <svg
+                className={`settings__custom-select-arrow ${dropdownOpen ? 'settings__custom-select-arrow--open' : ''}`}
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M1 1l4 4 4-4" />
+              </svg>
+            </button>
+            {dropdownOpen && (
+              <ul className="settings__custom-select-menu">
+                {formats.map(f => (
+                  <li
+                    key={f}
+                    className={`settings__custom-select-item ${outputFormat === f ? 'settings__custom-select-item--selected' : ''}`}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      setOutputFormat(f);
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+
+        {/* Quality */}
+        <div className="settings__row settings__row--compact">
+          <label className="settings__label">Quality</label>
+          <div className="settings__quality-options">
+            {[100, 90, 80, 70, 60].map(q => (
+              <button
+                key={q}
+                className={`settings__quality-btn ${quality === q ? 'settings__quality-btn--active' : ''}`}
+                onClick={() => setQuality(q)}
+                type="button"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -193,23 +213,6 @@ export default function Settings({ sourceFormat, origWidth, origHeight, onChange
             </svg>
             Remove
           </button>
-        </div>
-      </div>
-
-      {/* Quality */}
-      <div className="settings__row">
-        <label className="settings__label">Quality</label>
-        <div className="settings__quality-options">
-          {[100, 90, 80, 70, 60].map(q => (
-            <button
-              key={q}
-              className={`settings__quality-btn ${quality === q ? 'settings__quality-btn--active' : ''}`}
-              onClick={() => setQuality(q)}
-              type="button"
-            >
-              {q}
-            </button>
-          ))}
         </div>
       </div>
     </div>

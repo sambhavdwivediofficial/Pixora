@@ -90,6 +90,33 @@
   color: var(--border-bright);
 }
 
+/* TIFF unsupported preview */
+.preview-box__unsupported-format {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+.preview-box__unsupported-format svg {
+  width: 98px;
+  height: 98px;
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.preview-box__unsupported-format-label {
+  font-size: 0.99rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+.preview-box__unsupported-format-sub {
+  font-size: 0.99rem;
+  color: var(--text-muted);
+}
+
 /* Info bar below image */
 .preview-box__info {
   flex-shrink: 0;
@@ -119,7 +146,7 @@
   box-shadow: 0 0 0 1px var(--accent-dim), var(--shadow-accent);
 }
 
-/* Download overlay — MUST be inside image-wrap (position:relative parent) */
+/* Download overlay */
 .download-overlay {
   position: absolute;
   inset: 0;
@@ -146,13 +173,11 @@
   font-family: var(--font-display);
   cursor: pointer;
   transition: all var(--transition-base);
-  /* box-shadow: 0 4px 24px rgba(124, 106, 247, 0.5); */
 }
 
 .download-overlay__btn:hover {
   background-color: var(--accent-dim);
   transform: scale(1.05);
-  /* box-shadow: 0 8px 32px rgba(124, 106, 247, 0.65); */
 }
 
 .download-overlay__btn:active {

@@ -37,28 +37,13 @@ async def convert_image(
     if (out_w, out_h) != (orig_w, orig_h):
         img = img.resize((out_w, out_h), Image.LANCZOS)
 
-    # --- Handle SVG output (rasterized PNG piped through cairosvg — simplified) ---
+    # --- Handle SVG output ---
     if tgt == "svg":
-        # We produce a lossless PNG when SVG is target (SVG generation from raster is complex)
         img = ensure_rgb(img, "png")
         buf = io.BytesIO()
         img.save(buf, format="PNG")
         mime = get_mime("png")
         return buf.getvalue(), mime, out_w, out_h
-
-    # --- Handle HEIC output ---
-    if tgt in ("heic", "heif"):
-        try:
-            import pillow_heif
-            pillow_heif.register_heif_opener()
-            img = img.convert("RGB") if img.mode not in ("RGB", "RGBA") else img
-            buf = io.BytesIO()
-            heif_file = pillow_heif.from_pillow(img)
-            heif_file.save(buf, format="HEIF", quality=quality)
-            mime = get_mime("heic")
-            return buf.getvalue(), mime, out_w, out_h
-        except Exception as e:
-            raise RuntimeError(f"HEIC conversion failed: {e}")
 
     # --- Pillow-based conversion ---
     img = ensure_rgb(img, tgt)

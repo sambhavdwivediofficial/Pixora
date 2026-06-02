@@ -6,21 +6,17 @@
 
 .convert-btn {
   width: 100%;
-  padding: 14px 24px;
+  padding: 12px 24px;
   background: linear-gradient(135deg, var(--accent), var(--accent-bright));
   border: none;
   border-radius: var(--radius-lg);
   color: #fff;
-  font-size: 1rem;
-  font-weight: 700;
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
   cursor: pointer;
   transition: all var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   position: relative;
   overflow: hidden;
 }
@@ -40,7 +36,6 @@
 
 .convert-btn:hover {
   transform: translateY(-2px);
-  /* box-shadow: 0 8px 32px rgba(124, 106, 247, 0.45); */
 }
 
 .convert-btn:active {
@@ -51,22 +46,67 @@
   opacity: 0.45;
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
 }
 
-.convert-btn__text {
-  position: relative;
-  z-index: 1;
-}
-
-.convert-btn__arrow {
+.convert-btn__content {
   position: relative;
   z-index: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 4px;
 }
 
-.convert-btn__arrow svg {
+.convert-btn__top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -5px;
+  margin-bottom: -2px;
+}
+
+.convert-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.convert-btn__icon svg {
   width: 16px;
   height: 16px;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.3));
+}
+
+.convert-btn__label {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.convert-btn__mapping {
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  opacity: 0.95;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-left: 30px;
+  margin-bottom: -9px;
+}
+
+@media (max-width: 480px) {
+  .convert-btn {
+    padding: 11px 20px;
+  }
+
+  .convert-btn__label {
+    font-size: 1.05rem;
+  }
+
+  .convert-btn__mapping {
+    font-size: 0.74rem;
+  }
 }

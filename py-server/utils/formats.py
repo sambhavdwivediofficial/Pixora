@@ -4,7 +4,7 @@ Format constants and mappings for Pixora.
 
 SUPPORTED_INPUT_FORMATS = {
     "png", "jpg", "jpeg", "webp", "bmp", "tiff", "tif",
-    "avif", "heic", "heif", "svg", "ico",
+    "avif", "svg", "ico",
 }
 
 SUPPORTED_INPUT_MIMES = {
@@ -14,8 +14,6 @@ SUPPORTED_INPUT_MIMES = {
     "image/bmp",
     "image/tiff",
     "image/avif",
-    "image/heic",
-    "image/heif",
     "image/svg+xml",
     "image/x-icon",
     "image/vnd.microsoft.icon",
@@ -24,13 +22,14 @@ SUPPORTED_INPUT_MIMES = {
 UNSUPPORTED_FORMATS = {
     "gif", "mp4", "mov", "avi", "mkv", "webm",
     "mp3", "wav", "ogg", "pdf", "doc", "docx",
+    "heic", "heif",
 }
 
-OUTPUT_FORMATS = ["png", "jpg", "webp", "bmp", "tiff", "avif", "heic", "svg"]
+OUTPUT_FORMATS = ["png", "jpg", "webp", "bmp", "tiff", "avif", "svg"]
 
 ICO_INPUT_FORMATS = {
     "png", "jpg", "jpeg", "webp", "bmp", "tiff", "tif",
-    "avif", "heic", "heif", "svg",
+    "avif", "svg",
 }
 
 FORMAT_TO_PILLOW = {
@@ -42,8 +41,6 @@ FORMAT_TO_PILLOW = {
     "tiff": "TIFF",
     "tif":  "TIFF",
     "avif": "AVIF",
-    "heic": "HEIC",
-    "heif": "HEIF",
     "svg":  "SVG",
     "ico":  "ICO",
 }
@@ -57,7 +54,6 @@ FORMAT_MIME = {
     "tiff": "image/tiff",
     "tif":  "image/tiff",
     "avif": "image/avif",
-    "heic": "image/heic",
     "svg":  "image/svg+xml",
     "ico":  "image/x-icon",
     "zip":  "application/zip",
