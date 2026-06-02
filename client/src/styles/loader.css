@@ -1,3 +1,7 @@
+/* =============================================
+   ORBITAL MULTI-RING LOADER
+   ============================================= */
+
 .loader-wrap {
   display: flex;
   flex-direction: column;
@@ -5,24 +9,92 @@
   gap: 10px;
 }
 
-.loader-ring {
-  animation: spin 0.9s linear infinite;
+.loader-orbital {
   display: block;
+  /* subtle overall breathing */
+  animation: orbital-breathe 3s ease-in-out infinite;
 }
 
-.loader-track {
-  stroke: var(--border-default);
+/* ---- Outer track (background ring) ---- */
+.orbital-track {
+  stroke: var(--border-default, #2a2a3d);
+  opacity: 0.5;
 }
 
-.loader-arc {
-  stroke: var(--loader-color, var(--accent));
-  stroke-dasharray: 60 35;
-  filter: drop-shadow(0 0 6px var(--loader-color, var(--accent)));
+/* =============================================
+   RING 1 — Outer dominant arc (clockwise)
+   Color: --accent-dim / --loader-color
+   ============================================= */
+.orbital-ring--1 {
+  stroke: var(--loader-color, var(--accent-dim, #4a3fa3));
+  stroke-dasharray: 94 38;          /* ~70% visible, gap rotates */
+  filter: drop-shadow(0 0 8px var(--loader-color, var(--accent-dim, #4a3fa3)));
+  animation: spin-cw 0.9s linear infinite;
+  transform-origin: 24px 24px;
 }
 
+/* =============================================
+   RING 2 — Half-circle arc (counter-clockwise)
+   Color: --text-secondary
+   ============================================= */
+.orbital-ring--2 {
+  stroke: var(--text-secondary, #9896b8);
+  stroke-dasharray: 48 50;          /* roughly half circumference */
+  filter: drop-shadow(0 0 5px var(--text-secondary, #9896b8));
+  animation: spin-ccw 1.4s linear infinite;
+  transform-origin: 24px 24px;
+}
+
+/* =============================================
+   RING 3 — Dotted ring (clockwise, faster)
+   Color: --border-bright
+   ============================================= */
+.orbital-ring--3 {
+  stroke: var(--border-bright, #3d3d58);
+  stroke-dasharray: 1 11.5;         /* tiny dash + gap = clean dots */
+  filter: drop-shadow(0 0 3px var(--border-bright, #3d3d58));
+  animation: spin-cw 0.55s linear infinite;
+  transform-origin: 24px 24px;
+}
+
+/* =============================================
+   RING 4 — Core micro-arc (counter-clockwise, fastest)
+   Color: --text-muted
+   ============================================= */
+.orbital-ring--4 {
+  stroke: var(--text-muted, #5c5a7a);
+  stroke-dasharray: 13 18.5;        /* ~140° arc */
+  filter: drop-shadow(0 0 4px var(--text-muted, #5c5a7a));
+  animation: spin-ccw 0.4s linear infinite;
+  transform-origin: 24px 24px;
+}
+
+/* ---- Label ---- */
 .loader-label {
   font-size: 0.73rem;
-  font-family: var(--font-mono);
-  color: var(--text-muted);
-  animation: pulse-glow 1.5s ease-in-out infinite;
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+  color: var(--text-muted, #5c5a7a);
+  letter-spacing: 0.04em;
+  animation: pulse-fade 1.5s ease-in-out infinite;
+}
+
+/* =============================================
+   KEYFRAMES
+   ============================================= */
+@keyframes spin-cw {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-ccw {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes orbital-breathe {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.04); }
+}
+
+@keyframes pulse-fade {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
 }
