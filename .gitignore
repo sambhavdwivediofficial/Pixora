@@ -45,6 +45,7 @@ target/
 Cargo.lock
 src-tauri/icons
 src-tauri/gen
+Pixora/
 
 # Uncomment below if building an application
 #! Cargo.lock
